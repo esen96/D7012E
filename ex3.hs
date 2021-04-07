@@ -20,7 +20,7 @@ greater :: [Int] -> Bool
 greater g = len ls == len g
     where ls = filter (>0) g
 
--- 9.7 using map, filter, zipWith
+-- 9.7
 minval :: (Int -> Int) -> Int -> Int
 minval f n = minimum x
     where x = map f [0..n]
@@ -41,25 +41,6 @@ ascending f n = and comp
             where 
                 x = map f [0..(n-1)]
                 y = map f [1..n]
-
-
-
--- test functions for 9.7
-incr :: Int -> Int 
-incr n = n+1
-
-sign :: Int -> Int
-sign n
-    | n == 0    = 0
-    | n > 0     = -n
-    | otherwise = abs n
-
-enn :: Int -> Int
-enn n = n
-
-onlyfive :: Int -> Int
-onlyfive n = 5
-
 
 -- 9.9
 iter :: Int -> (a -> a) -> a -> a
