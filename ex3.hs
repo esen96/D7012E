@@ -47,4 +47,24 @@ iter :: Int -> (a -> a) -> a -> a
 iter 0 f x      = x
 iter n f x      = iter (n-1) f (f x)
 
+--9.10
+double :: Int -> Int 
+double n = 2*n
 
+twopow :: Int -> Int
+twopow n = iter (n-1) double 2
+
+-- 9.11
+smsqrs :: Int -> Int 
+smsqrs n = foldr (+) 0 (map (^2) [0..n])
+
+--9.16
+filterFirst :: (a -> Bool) -> [a] -> [a]
+filterFirst f [] = []
+filterFirst f (x:xs)
+    | f x = x : filterFirst f xs 
+    | otherwise = xs
+
+-- 9.17
+filterLast :: (a -> Bool) -> [a] -> [a]
+filterLast f x = reverse (filterFirst f (reverse x))
