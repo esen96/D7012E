@@ -1,9 +1,11 @@
-{- 14.1
+data Temp = Cold | Hot deriving Show
+data Season = Spring | Summer | Autumn | Winter
+
+-- 14.1
 weather :: Season -> Temp
-weather w 
-    | w == Summer   = Hot
-    | otherwise     = Cold
--}
+weather Summer = Hot
+weather _ = Cold
+
 
 -- 14.4 
 perimeter :: Shape -> Float
@@ -23,13 +25,13 @@ isRound (Circle _ )      = True
 isRound (Rectangle _ _)  = False
 isRound (Triangle _ _ _) = False  
 
-{- 
+
 area :: Shape -> Float 
 area (Circle r)         = pi*r*r
 area (Rectangle h w )   = h*w 
 area (Triangle a b c)   = sqrt (s*(s-a)*(s-b)*(s-c))
-    where s = div (a+b+c) 2 -- Shitcunt haskell
--}
+    where s = (a+b+c) / 2 
+
 
 -- 14.6
 isRegular :: Shape -> Bool 
