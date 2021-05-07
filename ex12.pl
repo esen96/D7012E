@@ -88,4 +88,4 @@ difference([H|T],S2,[H|R]) :-
 	
 difference([H|T],S2,R) :-
 	member(H,S2),
-	difference(T,S2,R), !.
+	difference(T,S2,R), !. 
