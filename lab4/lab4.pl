@@ -5,7 +5,7 @@ generateSets(_,[],[]).
 generateSets(L,[(I,J)|T],[(R,I,J,Sum)|Sets]) :- cut(L,I,J,R), sum(R,Sum), generateSets(L,T,Sets).
 
 % Creates a sublist of a list by cutting it from given first- and last indices
-cut([H|_],1,1,[H]).											 % I & J = 1, return head.
+cut([H|_],1,1,[H]).						 % I & J = 1, return head.
 cut([_|T],I,J,R):- I1 is I-1, J1 is J-1, cut(T,I1,J1,R).	 % Chop heads until I = 1
 cut([H|T],I,J,[H|L]):- 1 is I, K is J-1, cut(T,1,K,L).		 % Recursively append heads from case J = 1
 
@@ -21,7 +21,7 @@ len([_|T],R) :- len(T,L), R is L+1.
 generateIndices(First,Last,R) :- findall((I,J), (span(First,Last,I), span(First,Last,J), I =< J), R).
 
 % Generates numerical spans between given From and To values
-span(From,To,R) :- From =< To, R = From. 						 % Span sets From = R.
+span(From,To,R) :- From =< To, R = From. 					% set From = R.
 /* When trying to find more cases, Prolog will not revaluate the line above, 
    but rather evaluate the line below with the same parameters. */
 span(From,To,R) :- From < To, Next is From+1, span(Next, To, R). 
