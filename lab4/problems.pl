@@ -35,7 +35,7 @@ pack( [ [H|T] | H ], L) :- pack
 
 % 1.14
 dup([],[]).
-dup([X|Xs],[X,X|Ys]) :- dup(Xs,Ys).
+dup([X|Xs],[X,X|Ys]) :- dup(Xs,Ys). 
 
 
 
