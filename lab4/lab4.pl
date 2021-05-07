@@ -22,7 +22,7 @@ generateIndices(First,Last,R) :- findall((I,J), (span(First,Last,I), span(First,
 
 % Generates numerical spans between given From and To values
 span(From,To,R) :- From =< To, R = From. 	% set From = R.
-span(From,To,R) :- 							% Backtracking
+span(From,To,R) :- 				% Backtracking
 	From < To, Next is From+1, 
 	span(Next, To, R). 
 
