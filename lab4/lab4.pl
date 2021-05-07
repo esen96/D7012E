@@ -21,10 +21,10 @@ len([_|T],R) :- len(T,L), R is L+1.
 generateIndices(First,Last,R) :- findall((I,J), (span(First,Last,I), span(First,Last,J), I =< J), R).
 
 % Generates numerical spans between given From and To values
-span(From,To,R) :- From =< To, R = From. 					% set From = R.
-/* When trying to find more cases, Prolog will not revaluate the line above, 
-   but rather evaluate the line below with the same parameters. */
-span(From,To,R) :- From < To, Next is From+1, span(Next, To, R). 
+span(From,To,R) :- From =< To, R = From. 	% set From = R.
+span(From,To,R) :- 							% Backtracking
+	From < To, Next is From+1, 
+	span(Next, To, R). 
 
 % Insertion Sort modified to fit a list of sets
 insert_sort(Sets,R):- i_sort(Sets,[],R).
