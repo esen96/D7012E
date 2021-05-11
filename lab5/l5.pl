@@ -6,7 +6,7 @@
 action(state(R1,R2,R3,robot(1,I)),NextState,Action) :-
 	member(steel,I), 	/* validate that robot has a steel key */
 	Action = move(2),	/* register which action has been taken */
-	NextState 		/* return the newly generated state */
+	NextState 		/* newly generated state */
 		= state(R1,R2,R3,robot(2,I)).
 
 % Action 2: move from room 1 to room 3
