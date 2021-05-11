@@ -6,7 +6,7 @@
 action(state(R1,R2,R3,robot(1,I)),NextState,Action) :-
 	member(steel,I), 	/* validate that robot has a steel key */
 	Action = move(2),	/* register which action has been taken */
-	NextState 			/* return the newly generated state */
+	NextState 		/* return the newly generated state */
 		= state(R1,R2,R3,robot(2,I)).
 
 % Action 2: move from room 1 to room 3
@@ -36,7 +36,7 @@ action(state(R1,R2,R3,robot(1,I)),NextState,Action) :-
 	Len < 2,		  
 	select(X,R1,NR1), /* select an item from room 1, save new list as NR1 */
 	Action = pick(X), 
-	NextState 		  /* update room 1 and robot inventory */
+	NextState 	  /* update room 1 and robot inventory */
 		= state(NR1,R2,R3,robot(1,[X|I])).
 	
 % Action 6: pick up an item in room 2
@@ -61,7 +61,7 @@ action(state(R1,R2,R3,robot(3,I)),NextState,Action) :-
 action(state(R1,R2,R3,robot(1,I)),NextState,Action) :-
 	select(X,I,NI),		/* drop item, save new inventory (NI) and item (X)*/
 	Action = drop(X),
-	NextState			/* add item to room 1 (R1), update new robot inventory */
+	NextState		/* add item to room 1 (R1), update new robot inventory */
 		= state([X|R1],R2,R3,robot(1,NI)).
 
 % Action 9: drop an item in room 2
@@ -126,4 +126,4 @@ cases(drop(Item)) :-
 % Solve and display
 solve() :-
 	solveR(state([steel],[brass],[package],robot(1,[])),12,Trace),
-	display(Trace), !. % Alternate solutions can be seen by removing the exclamation mark
+	display(Trace), !.
