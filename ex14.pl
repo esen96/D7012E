@@ -27,9 +27,9 @@ fac(N,M) :-
 	M is M2*N.
 
 addFs(N,Max) :-
-	findall(X,between(N,Max,X),R),
-	member(Y,R),
-	assertz(factorial(Y,Z) :- fac(Y,Z)),
+	between(N,Max,A),
+	fac(A,B),
+	assertz(factorial(A,B)),
 	fail;true.
 	
 showFs :-
@@ -38,9 +38,9 @@ showFs :-
 	fail;true.
 
 rmFs(N,Max) :-
-	findall(X,between(N,Max,X),R),
-	member(Y,R),
-	retract(factorial(Y,Z) :- fac(Y,Z)),
+	between(N,Max,A),
+	fac(A,B),
+	retract(factorial(A,B)),
 	fail;true.
 	
 % 7.8
