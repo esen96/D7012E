@@ -98,8 +98,7 @@ findmove(State,PL,OP,R) :-
 	
 /* A move is found in any direction by looking two squares ahead, 
    ensuring that we are within bounds (0-5), and that there is an enemy
-   disc one move ahead to reverse. If another enemy disc is two moves
-   ahead, continue recurring, if empty then we have a valid move. */
+   disc one move ahead to reverse. If so, scout ahead for an empty square. */
 
 % Find northbound move 
 move(1,State,PL,OP,[X,Y],R) :-
