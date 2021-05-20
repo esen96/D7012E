@@ -13,10 +13,10 @@
 
 initBoard([ [.,.,.,.,.,.], 
             [.,.,.,.,.,.],
-			[.,.,1,2,.,.], 
-			[.,.,2,1,.,.], 
+	    [.,.,1,2,.,.], 
+	    [.,.,2,1,.,.], 
             [.,.,.,.,.,.], 
-			[.,.,.,.,.,.] ]).
+	    [.,.,.,.,.,.] ]).
 
 initialize(InitialState,1) :-
 	initBoard(InitialState).
@@ -92,8 +92,8 @@ moves(_,_,[n]).
 
 % Find a player move
 findmove(State,PL,OP,R) :-
-	get(State,Pos,PL),		  	  % get a position occupied by player
-	between(1,8,Dir),			  % pick a valid direction (1-8 clockwise) 
+	get(State,Pos,PL),	      % get a position occupied by player
+	between(1,8,Dir),	      % pick a valid direction (1-8 clockwise) 
 	move(Dir,State,PL,OP,Pos,R).  % search for a move
 	
 /* A move is found in any direction by looking two squares ahead, 
@@ -106,7 +106,7 @@ move(1,State,PL,OP,[X,Y],R) :-
 	Y1 is Y - 1, 	 		% One square north
 	Y2 is Y - 2, 	 		% Two squares north
 	between(0,5,Y2), 		% Check that look-ahead squares are within bounds
-	get(State,[X,Y1],OP),	% Check that adjacent square is reversable
+	get(State,[X,Y1],OP),		% Check that adjacent square is reversable
 	scoutvertical(1,State,PL,OP,X,Y1,Y2,R).
 
 % Find north-eastbound move 
@@ -117,7 +117,7 @@ move(2,State,PL,OP,[X,Y],R) :-
 	X2 is X + 2, 	 		% Two squares east
 	between(0,5,X2), 		% Check that look-ahead squares are within bounds
 	between(0,5,Y2),
-	get(State,[X1,Y1],OP),	% Check that adjacent square is reversable
+	get(State,[X1,Y1],OP),		% Check that adjacent square is reversable
 	scoutdiagonal(2,State,PL,OP,X1,Y1,X2,Y2,R).
 
 % Find eastbound move 
@@ -125,7 +125,7 @@ move(3,State,PL,OP,[X,Y],R) :-
 	X1 is X + 1, 	 		% One square east
 	X2 is X + 2, 	 		% Two squares east
 	between(0,5,X2), 		% Check that look-ahead squares are within bounds
-	get(State,[X1,Y],OP),	% Check that adjacent square is reversable
+	get(State,[X1,Y],OP),		% Check that adjacent square is reversable
 	scouthorizontal(3,State,PL,OP,X1,X2,Y,R).
 
 % Find south-eastbound move 
@@ -136,7 +136,7 @@ move(4,State,PL,OP,[X,Y],R) :-
 	X2 is X + 2, 	 		% Two squares east
 	between(0,5,X2), 		% Check that look-ahead squares are within bounds
 	between(0,5,Y2),
-	get(State,[X1,Y1],OP),	% Check that adjacent square is reversable
+	get(State,[X1,Y1],OP),		% Check that adjacent square is reversable
 	scoutdiagonal(4,State,PL,OP,X1,Y1,X2,Y2,R).
 	
 % Find southbound move 
@@ -144,7 +144,7 @@ move(5,State,PL,OP,[X,Y],R) :-
 	Y1 is Y + 1, 	 		% One square south
 	Y2 is Y + 2, 	 		% Two squares south
 	between(0,5,Y2), 		% Check that look-ahead squares are within bounds
-	get(State,[X,Y1],OP),	% Check that adjacent square is reversable
+	get(State,[X,Y1],OP),		% Check that adjacent square is reversable
 	scoutvertical(5,State,PL,OP,X,Y1,Y2,R).
 
 % Find south-westbound move 
@@ -155,7 +155,7 @@ move(6,State,PL,OP,[X,Y],R) :-
 	X2 is X - 2, 	 		% Two squares west
 	between(0,5,X2), 		% Check that look-ahead squares are within bounds
 	between(0,5,Y2),
-	get(State,[X1,Y1],OP),	% Check that adjacent square is reversable
+	get(State,[X1,Y1],OP),		% Check that adjacent square is reversable
 	scoutdiagonal(6,State,PL,OP,X1,Y1,X2,Y2,R).
 
 % Find westbound move 
@@ -163,7 +163,7 @@ move(7,State,PL,OP,[X,Y],R) :-
 	X1 is X - 1, 	 		% One square west
 	X2 is X - 2, 	 		% Two squares west
 	between(0,5,X2), 		% Check that look-ahead squares are within bounds
-	get(State,[X1,Y],OP),	% Check that adjacent square is reversable
+	get(State,[X1,Y],OP),		% Check that adjacent square is reversable
 	scouthorizontal(7,State,PL,OP,X1,X2,Y,R).
 
 % Find south-westbound move 
@@ -174,7 +174,7 @@ move(8,State,PL,OP,[X,Y],R) :-
 	X2 is X - 2, 	 		% Two squares west
 	between(0,5,X2), 		% Check that look-ahead squares are within bounds
 	between(0,5,Y2),
-	get(State,[X1,Y1],OP),	% Check that adjacent square is reversable
+	get(State,[X1,Y1],OP),		% Check that adjacent square is reversable
 	scoutdiagonal(8,State,PL,OP,X1,Y1,X2,Y2,R).
 
 /*	
