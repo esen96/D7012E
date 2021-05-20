@@ -96,9 +96,9 @@ findmove(State,PL,OP,R) :-
 	between(1,8,Dir),	      % pick a valid direction (1-8 clockwise) 
 	move(Dir,State,PL,OP,Pos,R).  % search for a move
 	
-/* A move is found in any direction by looking two squares ahead, 
-   ensuring that we are within bounds (0-5), and that there is an enemy
-   disc one move ahead to reverse. If so, scout ahead for an empty square. */
+/* A move is found in any direction by looking two squares ahead, ensuring that 
+   we are within bounds (0-5), and that there is an enemy disc one move ahead 
+   to reverse. If so, pass on to the scouting function of that axis. */
 
 % Find northbound move 
 move(1,State,PL,OP,[X,Y],R) :-
